@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Cloud</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Secure Cloud</div>
+        <nav class="navigation">
+            <button class="nav-button" onclick="showSection('download')">Download</button>
+            <button class="nav-button" onclick="showSection('upload')">Upload</button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Welcome Page -->
+        <div class="section" id="welcome-section">
+            <h1>Hoş Geldiniz!</h1>
+            <p>Dosyalarınızı kolayca ve güvenli bir şekilde başkalarıyla paylaşın.</p>
+            <button class="start-button" onclick="showSection('download')">Başla</button>
+        </div>
+
+        <!-- Download Sekmesi -->
+        <div class="section" id="download-section" style="display: none;">
+            <h1>İndirme Sayfası</h1>
+            <p>Şifre ve dosya adını girerek belgenizi görüntüleyin ve indirin.</p>
+            <div class="password-input-area">
+                <input type="text" id="download-filename" placeholder="Dosya adınızı girin">
+                <input type="password" id="download-password" placeholder="Şifrenizi girin">
+                <button class="show-button" onclick="verifyPassword()">İndir</button>
+            </div>
+            <p id="error-message" class="error-message" style="display: none;">Hatalı şifre veya dosya adı, lütfen tekrar deneyin.</p>
+        </div>
+
+        <!-- Upload Sekmesi -->
+        <div class="section" id="upload-section" style="display: none;">
+            <div class="drop-zone" id="drop-zone">
+                <p>Dosyalarınızı buraya sürükleyip bırakın</p>
+                <p class="hint">veya</p>
+                <button class="file-select-button" onclick="triggerFileInput()">Dosya Seçin</button>
+            </div>
+            <input type="file" id="file-input" style="display: none;" />
+        </div>
+    </main>
+
+    <!-- Şifre Pop-up -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>Şifre:</h2>
+            <p id="generated-password"></p>
+            <div class="file-info">
+                <i class="file-icon">📄</i>
+                <span id="file-name"></span>
+            </div>
+            <p class="warning">Bu şifre tek seferlik oluşturulan bir şifredir ve bir daha görüntülenemeyecektir. Dosyalarınızın güvenliği için şifreyi başkalarının erişemeyeceği bir yere kaydediniz</p>
+            <button class="close-button" onclick="closePopup()">Kapat</button>
+        </div>
+    </div>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>
